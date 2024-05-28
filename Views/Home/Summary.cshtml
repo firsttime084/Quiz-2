@@ -1,0 +1,38 @@
+﻿@model List<Question>
+
+<div class="container mt-3 pb-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <p>Question</p>
+                </th>
+                <th>
+                    <p>Answer</p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var que in Model)
+            {
+                <tr>
+                    <td>@(que.QuestionId). @que.QuestionText</td>
+                    <td>
+                        @if (que.AnswerGivenIndex == 0)
+                        {
+                            <span style="color: grey;">Unanswered</span>
+                        }
+                        else if (que.GetSelectedAnswer().Iscorrect == true)
+                        {
+                            <span style="color: green;">Correct</span>
+                        }
+                        else if (que.GetSelectedAnswer().Iscorrect == false)
+                        {
+                            <span style="color: red;">Incorrect</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

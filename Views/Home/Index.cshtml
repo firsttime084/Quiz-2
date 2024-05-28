@@ -1,0 +1,17 @@
+﻿@model Question
+
+<div class="container mt-5">
+<form class="form-check" method="post" asp-action="Answers">
+    <h2>Question: @Model.QuestionId</h2>
+    <div>@Model.QuestionText</div>
+    <input type="hidden" value="@Model.QuestionId" asp-for="QuestionId" />
+    @foreach(var ans in Model.Answers)
+     {
+            <div class="form-check">
+                <input class="form-check-input" type="radio" asp-for="AnswerGivenIndex" value="@ans.AnswerId" />
+                <label class="form-check-label" >@ans.AnswerText</label>
+            </div>
+     }
+    <button type="submit" class="btn btn-primary mt-3">Save Answer</button>
+</form>
+</div>

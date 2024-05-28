@@ -1,0 +1,30 @@
+﻿@model Question
+
+<div class="container mt-5 mb-2 ms-3">
+    <h2>Add New Question</h2>
+    <form method="post" asp-controller="Home" asp-action="SubmitNewQuestion">
+        <div class="mb-3">
+            <label class="form-label">Question Text:</label>
+            <textarea class="form-control" rows="4" cols="50" style="max-width: 400px;" name="QuestionText" required></textarea>
+        </div>
+
+        <label for="answers">Answers:</label>
+        @for(int i = 0; i < 4; i++)
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="Answers[@i].AnswerText" placeholder="Answer @(i+1)"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label">Is Correct:</label>
+                        <input type="checkbox" class="form-check-input" name="Answers[@i].Iscorrect" value="true"/>
+                    </div>
+                </div>
+            </div>
+        }
+        <button type="submit" class="btn btn-success mt-3 ms-3">Add Question</button>
+    </form>
+</div>
